@@ -1,0 +1,150 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{float}
+\geometry{margin=1in}
+
+% Code listing style
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single,
+    backgroundcolor=\color{gray!10}
+}
+
+\title{Selective ARP and DNS Spoofing in an Isolated Lab Environment}
+\author{DAT 505 Assignment}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Executive Summary}
+This report documents the design, implementation, and analysis of a controlled Man-in-the-Middle (MitM) attack using ARP and DNS spoofing in an isolated virtual lab. Custom Python tools built with Scapy were used to perform ARP cache poisoning and selective DNS spoofing, redirecting victim traffic to attacker-controlled resources. The experiment includes traffic capture, analysis, and a discussion of mitigations and ethical considerations.
+
+\section{Introduction}
+Network attacks such as ARP and DNS spoofing are critical to understand for both offensive and defensive security. This project demonstrates these attacks in a safe, isolated environment, using custom tools to highlight their mechanics and propose countermeasures.
+
+\section{Lab Setup}
+\begin{itemize}
+    \item \textbf{Virtual Machines:}
+    \begin{itemize}
+        \item Attacker: Kali Linux (Python3, Scapy, Wireshark/tcpdump, dnsmasq)
+        \item Victim: Ubuntu (or Windows) with browser and client tools
+        \item Gateway/Server: Ubuntu (Apache/Nginx or Flask web server, local DNS)
+    \end{itemize}
+    \item \textbf{Network:} Internal-only, isolated virtual network (no external connectivity). IP forwarding enabled on Attacker as needed. Network managers disabled to prevent interference.
+    \item \textbf{Resources:} Each VM: 1--2 vCPU, 1--2 GB RAM. Snapshots taken before experiments.
+    \item \textbf{Traffic Capture:} tcpdump/Wireshark on Attacker and Victim. PCAPs stored in \texttt{pcap\_files/}. Logs and screenshots in \texttt{evidence/}.
+\end{itemize}
+
+\section{Tools and Dependencies}
+\begin{itemize}
+    \item Python 3: Scripting language for all custom tools.
+    \item Scapy: Packet crafting and sniffing (\texttt{pip install scapy}).
+    \item Flask: For the fake web server (\texttt{pip install flask}).
+    \item Colorama: Terminal color output (\texttt{pip install colorama}).
+    \item Wireshark/tcpdump: Traffic capture and analysis.
+    \item dnsmasq: Lightweight DNS server for forwarding (optional).
+    \item Other: Standard Python libraries (argparse, datetime, etc.).
+\end{itemize}
+All dependencies are listed in \texttt{requirements.txt}.
+
+\section{Methodology}
+\subsection{ARP Spoofing Tool (\texttt{arp\_spoof.py})}
+\begin{itemize}
+    \item Poisons ARP caches of victim and gateway to intercept traffic.
+    \item Command-line arguments for victim/gateway IP, interface.
+    \item Enables/disables IP forwarding.
+    \item Graceful ARP table restoration on exit.
+    \item Verbose logging.
+    \item Evidence: ARP table screenshots before/after, PCAP showing MitM traffic flow.
+\end{itemize}
+
+\subsection{Traffic Capture \& Analysis (\texttt{traffic\_interceptor.py})}
+\begin{itemize}
+    \item Sniffs and saves PCAPs for HTTP, DNS, SSH, FTP, etc.
+    \item Parser extracts visited URLs, DNS queries, top talkers, protocol counts.
+    \item Evidence: PCAP files, CSV/text extracts, annotated Wireshark screenshots.
+\end{itemize}
+
+\subsection{DNS Spoofing Tool (\texttt{dns\_spoof.py})}
+\begin{itemize}
+    \item Intercepts DNS queries, selectively spoofs responses for target domains.
+    \item Correct transaction ID/flags.
+    \item Whitelist/blacklist for spoofing.
+    \item Forwards unmatched queries to upstream DNS.
+    \item Configurable via JSON.
+    \item Fake Web Server: Flask-based, displays a warning page for redirected victims, logs all visits for evidence.
+    \item Evidence: PCAP with spoofed DNS responses, victim browser screenshot showing redirection, web server logs.
+\end{itemize}
+
+\subsection{SSLStrip Demonstration (Optional, \texttt{sslstrip\_demo.py})}
+\begin{itemize}
+    \item Demonstrates HTTPS$\rightarrow$HTTP downgrade via iptables and a proxy.
+    \item Evidence: PCAPs before/after SSLStrip, log of downgraded connections, discussion of HSTS/TLS mitigations.
+\end{itemize}
+
+\section{Results}
+\begin{itemize}
+    \item \textbf{ARP Spoofing:} Successfully established MitM; ARP tables on victim/gateway showed attacker’s MAC for each other’s IP. PCAPs confirmed traffic interception.
+    \item \textbf{Traffic Analysis:} Extracted URLs, DNS queries, and protocol statistics from PCAPs. Identified top talkers and protocol usage.
+    \item \textbf{DNS Spoofing:} Selective domains (e.g., \texttt{www.google.com}) resolved to attacker-controlled IP. Victim browser displayed fake warning page. Web server logs and PCAPs confirmed redirection.
+    \item \textbf{SSLStrip (if performed):} Observed HTTP downgrade and captured credentials in plaintext. HSTS and modern browsers limited attack effectiveness.
+\end{itemize}
+
+\textbf{PCAP Files:}
+\begin{itemize}
+    \item pcap\_files/demo\_capture.pcap
+    \item pcap\_files/demo\_capture\_dns\_queries.csv
+    \item pcap\_files/demo\_capture\_http\_requests.csv
+    \item pcap\_files/demo\_capture\_summary.json
+\end{itemize}
+
+\section{Mitigations}
+\begin{itemize}
+    \item \textbf{ARP Spoofing:} Use static ARP entries for critical hosts. Enable dynamic ARP inspection (DAI) on switches. Monitor for duplicate ARP responses.
+    \item \textbf{DNS Spoofing:} Use DNSSEC validation. Employ DNS over HTTPS (DoH) or DNS over TLS (DoT). Monitor for suspicious DNS responses.
+    \item \textbf{General:} Network segmentation and VLANs. User education and monitoring.
+\end{itemize}
+
+\section{Ethics and Safety}
+All experiments were conducted in a closed, isolated lab environment. No attacks were performed on public, university, or corporate networks. Unauthorized use of these techniques is illegal and unethical. This work is for educational and defensive research only.
+
+\section{Conclusion}
+This project demonstrates the feasibility and risks of ARP and DNS spoofing attacks using custom Python tools. The isolated lab setup allowed for safe experimentation, traffic analysis, and the development of effective mitigations. Understanding these attacks is essential for building more secure networks.
+
+\section*{References}
+\begin{itemize}
+    \item Scapy Documentation: \url{https://scapy.readthedocs.io/}
+    \item Flask Documentation: \url{https://flask.palletsprojects.com/}
+    \item Wireshark User Guide: \url{https://www.wireshark.org/docs/}
+    \item RFC 826: Address Resolution Protocol
+    \item RFC 1035: Domain Names - Implementation and Specification
+    \item Project GitHub Repository: \url{https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME}
+\end{itemize}
+
+\section*{Appendices}
+\begin{itemize}
+    \item Scripts: See repository (\texttt{arp\_spoof.py}, \texttt{dns\_spoof.py}, \texttt{traffic\_interceptor.py}, \texttt{fake\_web\_server.py}, etc.)
+    \item PCAPs: \texttt{pcap\_files/}
+    \item Evidence: \texttt{evidence/}
+    \item Requirements: \texttt{requirements.txt}
+\end{itemize}
+
+\textbf{Sample PCAP and CSV Evidence:}
+\begin{itemize}
+    \item See pcap\_files/demo\_capture.pcap (open with Wireshark)
+    \item See pcap\_files/demo\_capture\_dns\_queries.csv (open with Excel or text editor)
+    \item See pcap\_files/demo\_capture\_http\_requests.csv
+    \item See pcap\_files/demo\_capture\_summary.json
+\end{itemize}
+
+\end{document}
