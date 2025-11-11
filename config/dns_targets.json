@@ -1,0 +1,15 @@
+{
+  "targets": {
+    "example.com": "192.168.56.30",
+    "www.example.com": "192.168.56.30",
+    "google.com": "192.168.56.30",
+    "www.google.com": "192.168.56.30",
+    "facebook.com": "192.168.56.30",
+    "www.facebook.com": "192.168.56.30",
+    "github.com": "192.168.56.30",
+    "www.github.com": "192.168.56.30"
+  },
+  "forward_unmatched": true,
+  "upstream_dns": "8.8.8.8",
+  "description": "DNS spoofing targets - domains to redirect to attacker-controlled server"
+}

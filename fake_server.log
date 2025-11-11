@@ -1,0 +1,15 @@
+==================================================
+FAKE WEB SERVER
+==================================================
+[+] Starting server on 0.0.0.0:8080
+[+] Visit /logs to see visitor statistics
+[!] This server demonstrates DNS spoofing redirection
+ * Serving Flask app 'fake_web_server'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.86.32:8080
+Press CTRL+C to quit
+[VICTIM] localhost:8080 accessed by 127.0.0.1
+127.0.0.1 - - [11/Nov/2025 10:28:34] "GET / HTTP/1.1" 200 -
