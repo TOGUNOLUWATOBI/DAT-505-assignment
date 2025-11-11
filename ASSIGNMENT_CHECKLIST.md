@@ -1,6 +1,6 @@
 # DAT 505 Assignment Checklist
 
-## Pre-Assignment Setup ✅
+## Pre-Assignment Setup 
 
 ### Lab Environment
 - [ ] Three VMs configured (Attacker, Victim, Gateway)
@@ -21,14 +21,14 @@
 - [ ] Network connectivity verified between VMs
 - [ ] Basic packet crafting works (Scapy import test)
 
-## Task 1: ARP Spoofing Tool ✅
+## Task 1: ARP Spoofing Tool 
 
 ### Implementation Requirements
 - [x] Command-line arguments (victim IP, gateway IP, interface)
 - [x] Enable/disable IP forwarding functionality
 - [x] Graceful restore on exit (Ctrl+C handling)
 - [x] Verbose mode for detailed logging
-- [x] Bidirectional ARP spoofing (victim ↔ gateway)
+- [x] Bidirectional ARP spoofing (victim  gateway)
 
 ### Testing & Evidence Collection
 - [ ] Screenshot of ARP table before spoofing attack
@@ -53,7 +53,7 @@ ping 8.8.8.8
 sudo tcpdump -i eth0 -w evidence/arp_spoofing.pcap
 ```
 
-## Task 2: Traffic Capture & Analysis ✅
+## Task 2: Traffic Capture & Analysis 
 
 ### Implementation Requirements
 - [x] Sniff and save PCAPs for common protocols (HTTP, DNS, SSH, FTP)
@@ -80,7 +80,7 @@ dig google.com
 wget http://httpbin.org/get
 ```
 
-## Task 3: DNS Spoofing ✅
+## Task 3: DNS Spoofing 
 
 ### Implementation Requirements
 - [x] Correct transaction ID and flags in DNS responses
@@ -114,7 +114,7 @@ nslookup facebook.com
 curl http://github.com
 ```
 
-## Task 4: SSLStrip Demo (Optional) ✅
+## Task 4: SSLStrip Demo (Optional) 
 
 ### Implementation Requirements
 - [x] iptables redirection of HTTP/HTTPS traffic
@@ -123,7 +123,7 @@ curl http://github.com
 - [x] Observe rewritten redirects
 
 ### Testing & Evidence Collection
-- [ ] PCAP evidence of HTTPS→HTTP downgrade
+- [ ] PCAP evidence of HTTPSHTTP downgrade
 - [ ] Comparison of traffic before/after SSLStrip
 - [ ] Discussion of HSTS and modern mitigations
 - [ ] Explanation of limited effectiveness
@@ -138,7 +138,7 @@ curl -v https://example.com
 curl -v https://httpbin.org/get
 ```
 
-## Submission Requirements ✅
+## Submission Requirements 
 
 ### GitHub Repository
 - [x] All scripts (arp_spoof.py, traffic_interceptor.py, dns_spoof.py, sslstrip_demo.py)

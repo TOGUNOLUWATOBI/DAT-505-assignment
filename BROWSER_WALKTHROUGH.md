@@ -73,7 +73,7 @@ python3 test_suite.py
    - Go to: https://www.virtualbox.org/
    - Click "Downloads"
    - Download "VirtualBox for macOS hosts"
-   - Install the .dmg file (may need to allow in System Preferences → Security)
+   - Install the .dmg file (may need to allow in System Preferences  Security)
 
 ### 5B. Download Operating System ISOs
 
@@ -81,8 +81,8 @@ First, check your Mac architecture:
 ```bash
 uname -m
 ```
-- If shows `x86_64` → Download AMD64 versions
-- If shows `arm64` → Download ARM64 versions
+- If shows `x86_64`  Download AMD64 versions
+- If shows `arm64`  Download ARM64 versions
 
 Download these ISO files:
 
@@ -112,16 +112,16 @@ Download these ISO files:
    - Version: `Debian (64-bit)`
    - Click "Continue"
 
-4. Set Memory: `2048 MB` → Click "Continue"
+4. Set Memory: `2048 MB`  Click "Continue"
 
 5. Hard Disk:
-   - Select "Create a virtual hard disk now" → Click "Create"
-   - Choose "VDI" → Click "Continue"  
-   - Choose "Dynamically allocated" → Click "Continue"
-   - Set size: `20.00 GB` → Click "Create"
+   - Select "Create a virtual hard disk now"  Click "Create"
+   - Choose "VDI"  Click "Continue"  
+   - Choose "Dynamically allocated"  Click "Continue"
+   - Set size: `20.00 GB`  Click "Create"
 
 6. Configure Network (IMPORTANT):
-   - Right-click the VM → "Settings"
+   - Right-click the VM  "Settings"
    - Click "Network" tab
    - Adapter 1:
      - Check "Enable Network Adapter"
@@ -130,8 +130,8 @@ Download these ISO files:
    - Click "OK"
 
 7. Install Kali Linux:
-   - Right-click VM → "Settings" → "Storage"
-   - Click the CD icon → "Choose a disk file"
+   - Right-click VM  "Settings"  "Storage"
+   - Click the CD icon  "Choose a disk file"
    - Select your Kali Linux .iso file
    - Click "OK"
    - Start the VM and follow Kali installation
@@ -149,9 +149,9 @@ Download these ISO files:
 4. Hard Disk: Create new VDI, `15.00 GB`
 
 5. Configure Network:
-   - Right-click VM → "Settings" → "Network"
+   - Right-click VM  "Settings"  "Network"
    - Adapter 1:
-     - Enable Network Adapter ✓
+     - Enable Network Adapter 
      - "Attached to:" "Internal Network"
      - "Name:" `lab-network`
 
@@ -172,9 +172,9 @@ Download these ISO files:
 4. Hard Disk: Create new VDI, `10.00 GB`
 
 5. Configure Network:
-   - Right-click VM → "Settings" → "Network"
+   - Right-click VM  "Settings"  "Network"
    - Adapter 1:
-     - Enable Network Adapter ✓
+     - Enable Network Adapter 
      - "Attached to:" "Internal Network"
      - "Name:" `lab-network`
 
@@ -185,7 +185,7 @@ Download these ISO files:
 ### 5F. Verify All VMs Use Same Network
 
 Double-check each VM:
-1. Right-click each VM → "Settings"
+1. Right-click each VM  "Settings"
 2. Go to "Network" tab
 3. Confirm:
    - Enable Network Adapter is checked

@@ -257,15 +257,15 @@ class TestSuite:
             print(f"\n{Fore.RED}Failed Tests:{Style.RESET_ALL}")
             for result in self.test_results:
                 if not result['passed']:
-                    print(f"  ❌ {result['test']}: {result['message']}")
+                    print(f"   {result['test']}: {result['message']}")
         
         print(f"\n{Fore.CYAN}Recommendations:{Style.RESET_ALL}")
         if self.tests_failed == 0:
-            print(f"  {Fore.GREEN}✅ All tests passed! Your project is ready for deployment.{Style.RESET_ALL}")
+            print(f"  {Fore.GREEN} All tests passed! Your project is ready for deployment.{Style.RESET_ALL}")
         else:
-            print(f"  {Fore.YELLOW}⚠️  Fix failed tests before proceeding with the assignment.{Style.RESET_ALL}")
-            print(f"  {Fore.BLUE}💡 Run 'pip install -r requirements.txt' to install missing dependencies.{Style.RESET_ALL}")
-            print(f"  {Fore.BLUE}💡 Use 'chmod +x scripts/*.py' to fix permission issues.{Style.RESET_ALL}")
+            print(f"  {Fore.YELLOW}  Fix failed tests before proceeding with the assignment.{Style.RESET_ALL}")
+            print(f"  {Fore.BLUE} Run 'pip install -r requirements.txt' to install missing dependencies.{Style.RESET_ALL}")
+            print(f"  {Fore.BLUE} Use 'chmod +x scripts/*.py' to fix permission issues.{Style.RESET_ALL}")
 
     def run_all_tests(self):
         """Run all test suites"""

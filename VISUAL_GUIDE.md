@@ -1,14 +1,14 @@
-# 🎨 Visual Guide: Understanding Network Attacks
+#  Visual Guide: Understanding Network Attacks
 
-## 🏠 Lab Setup Diagram
+##  Lab Setup Diagram
 
 ```
 Your Computer (Host)
-├── VirtualBox Software
-    ├── VM #1: Attacker (Kali Linux)    IP: 192.168.1.100
-    ├── VM #2: Victim (Ubuntu Desktop)  IP: 192.168.1.10  
-    └── VM #3: Gateway (Ubuntu Server)  IP: 192.168.1.1
-                     │
+ VirtualBox Software
+     VM #1: Attacker (Kali Linux)    IP: 192.168.1.100
+     VM #2: Victim (Ubuntu Desktop)  IP: 192.168.1.10  
+     VM #3: Gateway (Ubuntu Server)  IP: 192.168.1.1
+                     
             [Internal Network: lab-network]
 ```
 
@@ -16,16 +16,16 @@ Your Computer (Host)
 
 ---
 
-## 🌐 Normal Network Flow (Before Attack)
+##  Normal Network Flow (Before Attack)
 
 ```
 Victim Computer                Gateway                Internet
-[192.168.1.10] ────────────► [192.168.1.1] ────────► [Websites]
-      │                           │
-      │ "I want to visit          │ "I'll forward this
-      │  google.com"              │  to the internet"
-      │                           │
-      ◄───────────────────────────◄ [Response comes back]
+[192.168.1.10]  [192.168.1.1]  [Websites]
+                                 
+       "I want to visit           "I'll forward this
+        google.com"                to the internet"
+                                 
+       [Response comes back]
     "Here's google.com"
 ```
 
@@ -37,7 +37,7 @@ Victim Computer                Gateway                Internet
 
 ---
 
-## 🎯 ARP Spoofing Attack
+##  ARP Spoofing Attack
 
 ### Step 1: Normal ARP Table
 ```
@@ -52,30 +52,30 @@ Attacker sends fake messages:
 "Hey Gateway! I'm the Victim now!"
 
     Victim                 Attacker               Gateway
-[192.168.1.10] ◄─────► [192.168.1.100] ◄─────► [192.168.1.1]
+[192.168.1.10]  [192.168.1.100]  [192.168.1.1]
                      "I'm in the middle!"
 ```
 
 ### Step 3: Poisoned ARP Table
 ```
 Victim's ARP Table (Now Corrupted):
-192.168.1.1 (Gateway) = MAC: xx:yy:zz:aa:bb:cc  ← Attacker's MAC!
+192.168.1.1 (Gateway) = MAC: xx:yy:zz:aa:bb:cc   Attacker's MAC!
 ```
 
 **Result**: All traffic flows through attacker!
 
 ---
 
-## 📡 Traffic Interception Flow
+##  Traffic Interception Flow
 
 ```
 Normal Flow:
-Victim ────────► Gateway ────────► Internet
+Victim  Gateway  Internet
 
 After ARP Spoofing:
-Victim ────────► Attacker ────────► Gateway ────────► Internet
-                    │
-                    ▼
+Victim  Attacker  Gateway  Internet
+                    
+                    
                [Captures Everything]
                - HTTP requests
                - DNS queries  
@@ -90,7 +90,7 @@ Victim ────────► Attacker ────────► Gateway 
 
 ---
 
-## 🎭 DNS Spoofing Attack
+##  DNS Spoofing Attack
 
 ### Normal DNS Process:
 ```
@@ -98,7 +98,7 @@ Victim ────────► Attacker ────────► Gateway 
 2. DNS Server: "It's 172.217.164.14"
 3. Victim connects to real Google
 
-Victim ────────► DNS Server ────────► Real Google
+Victim  DNS Server  Real Google
    "google.com?"    "172.217.164.14"     [Real Website]
 ```
 
@@ -108,10 +108,10 @@ Victim ────────► DNS Server ────────► Real G
 2. Attacker intercepts and responds first: "It's 192.168.1.100" (fake!)
 3. Victim connects to attacker's fake server
 
-Victim ────────► Attacker ────────► Fake Website
+Victim  Attacker  Fake Website
    "google.com?"    "192.168.1.100"    [Attacker's Server]
-                         │
-                         ▼
+                         
+                         
                    [Fake Google Page]
                    "You've been hacked!"
 ```
@@ -120,7 +120,7 @@ Victim ────────► Attacker ────────► Fake Web
 
 ---
 
-## 🛡️ How Defenses Work
+##  How Defenses Work
 
 ### ARP Protection:
 ```
@@ -129,13 +129,13 @@ Static ARP Entry:
 Cannot be changed by fake ARP messages!
 
 ARP Monitoring:
-[Security Tool] ────► "Alert! ARP table changed!"
+[Security Tool]  "Alert! ARP table changed!"
 ```
 
 ### DNS Protection:
 ```
 DNS over HTTPS (DoH):
-Victim ────────► [Encrypted Tunnel] ────────► Trusted DNS
+Victim  [Encrypted Tunnel]  Trusted DNS
          Can't be intercepted or spoofed!
 
 DNSSEC:
@@ -144,45 +144,45 @@ DNS Response + Digital Signature = Verified Authentic
 
 ---
 
-## 📊 Attack Timeline
+##  Attack Timeline
 
 ```
 Time: 0:00 - Lab Setup Complete
-├── All VMs can ping each other
-├── ARP tables show correct MAC addresses
-└── DNS resolves to real websites
+ All VMs can ping each other
+ ARP tables show correct MAC addresses
+ DNS resolves to real websites
 
 Time: 0:05 - Start ARP Spoofing
-├── Attacker sends fake ARP messages
-├── Victim's ARP table gets poisoned
-└── Traffic starts flowing through attacker
+ Attacker sends fake ARP messages
+ Victim's ARP table gets poisoned
+ Traffic starts flowing through attacker
 
 Time: 0:10 - Start Traffic Capture
-├── Attacker logs all HTTP requests
-├── Attacker captures DNS queries
-└── Evidence files are created
+ Attacker logs all HTTP requests
+ Attacker captures DNS queries
+ Evidence files are created
 
 Time: 0:15 - Start DNS Spoofing
-├── Attacker intercepts DNS queries
-├── Sends fake DNS responses
-└── Victim gets redirected to fake sites
+ Attacker intercepts DNS queries
+ Sends fake DNS responses
+ Victim gets redirected to fake sites
 
 Time: 0:20 - Collect Evidence
-├── Take screenshots of ARP tables
-├── Save captured network traffic
-└── Document successful redirections
+ Take screenshots of ARP tables
+ Save captured network traffic
+ Document successful redirections
 ```
 
 ---
 
-## 🎓 Real-World Impact
+##  Real-World Impact
 
 ### What Attackers Could Do:
 ```
 Coffee Shop Attack:
-Customer ────────► Fake WiFi ────────► Attacker's Laptop
-    │                                      │
-    ▼                                      ▼
+Customer  Fake WiFi  Attacker's Laptop
+                                          
+                                          
 Thinks they're on                    Steals passwords,
 cafe WiFi                           credit cards, emails
 ```
@@ -201,7 +201,7 @@ cafe WiFi                           credit cards, emails
 
 ---
 
-## 🔍 Evidence You're Collecting
+##  Evidence You're Collecting
 
 ### Screenshots Show:
 ```
@@ -209,10 +209,10 @@ Before Attack:
 ARP Table: 192.168.1.1 = real-gateway-mac
 
 During Attack:
-ARP Table: 192.168.1.1 = attacker-mac-address ← Proof of success!
+ARP Table: 192.168.1.1 = attacker-mac-address  Proof of success!
 
 DNS Spoofing:
-Browser shows: "You've been redirected!" ← Proof DNS spoofing worked
+Browser shows: "You've been redirected!"  Proof DNS spoofing worked
 ```
 
 ### Files Prove:
@@ -222,48 +222,48 @@ Browser shows: "You've been redirected!" ← Proof DNS spoofing worked
 
 ---
 
-## 🎯 Learning Objectives Visualized
+##  Learning Objectives Visualized
 
 ```
 Before This Assignment:
-You ────► "Networks seem secure"
+You  "Networks seem secure"
 
 After This Assignment:
-You ────► "I understand how networks can be attacked"
-    │
-    ▼
+You  "I understand how networks can be attacked"
+    
+    
 "I know how to defend against these attacks"
-    │
-    ▼
+    
+    
 "I can work in cybersecurity!"
 ```
 
 ### Career Paths This Prepares You For:
-- **🛡️ Cybersecurity Analyst**: Defend against these attacks
-- **🔍 Penetration Tester**: Legally test company security
-- **🌐 Network Administrator**: Secure networks properly
-- **🔬 Security Researcher**: Find and fix vulnerabilities
+- ** Cybersecurity Analyst**: Defend against these attacks
+- ** Penetration Tester**: Legally test company security
+- ** Network Administrator**: Secure networks properly
+- ** Security Researcher**: Find and fix vulnerabilities
 
 ---
 
-## 🚨 Ethical Boundaries Diagram
+##  Ethical Boundaries Diagram
 
 ```
-✅ LEGAL & ETHICAL:
-Your Lab ────► Isolated VMs ────► Educational Learning
-    │
-    ▼
+ LEGAL & ETHICAL:
+Your Lab  Isolated VMs  Educational Learning
+    
+    
 Better Security Knowledge
 
-❌ ILLEGAL & UNETHICAL:
-Real Network ────► Unauthorized Access ────► Stealing Data
-    │
-    ▼
+ ILLEGAL & UNETHICAL:
+Real Network  Unauthorized Access  Stealing Data
+    
+    
 Criminal Charges & Expulsion
 ```
 
-**Remember**: With great power comes great responsibility! 🕷️
+**Remember**: With great power comes great responsibility! 
 
 ---
 
-This visual guide should help you understand exactly what's happening at each step. The attacks might seem complicated, but they're really just tricks that exploit how computers normally trust each other on networks. Your job is to learn these tricks so you can protect against them! 🛡️
+This visual guide should help you understand exactly what's happening at each step. The attacks might seem complicated, but they're really just tricks that exploit how computers normally trust each other on networks. Your job is to learn these tricks so you can protect against them! 

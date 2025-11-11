@@ -58,15 +58,15 @@ FAKE_PAGE_TEMPLATE = """
 </head>
 <body>
     <div class="container">
-        <h1>🎯 DNS Spoofing Successful!</h1>
+        <h1> DNS Spoofing Successful!</h1>
         
         <div class="warning">
-            <h2>⚠️ Security Alert</h2>
+            <h2> Security Alert</h2>
             <p>This page demonstrates a successful DNS spoofing attack. You requested <strong>{{ domain }}</strong> but were redirected to an attacker-controlled server.</p>
         </div>
         
         <div class="info">
-            <h3>📊 Connection Details:</h3>
+            <h3> Connection Details:</h3>
             <p><strong>Requested Domain:</strong> {{ domain }}</p>
             <p><strong>Your IP Address:</strong> {{ client_ip }}</p>
             <p><strong>Server IP:</strong> {{ server_ip }}</p>
@@ -75,7 +75,7 @@ FAKE_PAGE_TEMPLATE = """
         </div>
         
         <div class="info">
-            <h3>🛡️ Mitigation Strategies:</h3>
+            <h3> Mitigation Strategies:</h3>
             <ul style="text-align: left;">
                 <li>Use DNS over HTTPS (DoH) or DNS over TLS (DoT)</li>
                 <li>Implement DNSSEC validation</li>

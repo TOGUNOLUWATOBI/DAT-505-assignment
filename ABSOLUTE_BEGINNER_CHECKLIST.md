@@ -1,9 +1,9 @@
-# ⚡ Quick Start Checklist for Complete Beginners
+#  Quick Start Checklist for Complete Beginners
 
-## 🎯 What Am I Doing?
+##  What Am I Doing?
 You're learning how hackers intercept internet traffic - but safely, in a controlled environment for educational purposes only.
 
-## ✅ Setup Checklist (Do This First!)
+##  Setup Checklist (Do This First!)
 
 ### Phase 1: Get the Software (30 minutes)
 - [ ] Download VirtualBox from https://www.virtualbox.org/
@@ -29,7 +29,7 @@ You're learning how hackers intercept internet traffic - but safely, in a contro
 - [ ] Run: `chmod +x scripts/*.py`
 - [ ] Test: `python3 scripts/arp_spoof.py -h` shows help
 
-## 🚀 Running Attacks (The Fun Part!)
+##  Running Attacks (The Fun Part!)
 
 ### Attack 1: ARP Spoofing (Make traffic go through you)
 ```bash
@@ -62,7 +62,7 @@ sudo python3 scripts/dns_spoof.py -i eth0 -c config/dns_targets.json --verbose
 curl http://google.com    # Should show fake page!
 ```
 
-## 📸 Evidence to Collect
+##  Evidence to Collect
 
 ### Screenshots Needed:
 1. **Before attack**: Victim's ARP table (`arp -a`)
@@ -76,7 +76,7 @@ curl http://google.com    # Should show fake page!
 - `*_http_requests.csv` - Web requests
 - Various `.json` log files
 
-## 🆘 Emergency Troubleshooting
+##  Emergency Troubleshooting
 
 ### Nothing Works?
 1. **Check you're in the right directory**: `cd "DAT 505 assignment"`
@@ -85,32 +85,32 @@ curl http://google.com    # Should show fake page!
 4. **Restart VMs**: Sometimes a reboot fixes everything
 
 ### Common Error Fixes:
-- **"Permission denied"** → Use `sudo`
-- **"Interface not found"** → Use `ip addr` to find correct interface name
-- **"No such file"** → Check you're in project directory
-- **VMs can't talk** → Verify all on "Internal Network" named "lab-network"
+- **"Permission denied"**  Use `sudo`
+- **"Interface not found"**  Use `ip addr` to find correct interface name
+- **"No such file"**  Check you're in project directory
+- **VMs can't talk**  Verify all on "Internal Network" named "lab-network"
 
-## 🎯 Success Indicators
+##  Success Indicators
 
 ### You Know It's Working When:
-- ✅ Victim's ARP table shows your MAC address for the gateway
-- ✅ Traffic capture shows HTTP requests from victim
-- ✅ DNS spoofing redirects victim to your fake website
-- ✅ You have screenshots and PCAP files as evidence
+-  Victim's ARP table shows your MAC address for the gateway
+-  Traffic capture shows HTTP requests from victim
+-  DNS spoofing redirects victim to your fake website
+-  You have screenshots and PCAP files as evidence
 
-## ⚠️ Safety Rules (READ THIS!)
+##  Safety Rules (READ THIS!)
 
 ### NEVER DO:
-- ❌ Run on real networks (school, work, home WiFi)
-- ❌ Attack networks you don't own
-- ❌ Use this to spy on real people
+-  Run on real networks (school, work, home WiFi)
+-  Attack networks you don't own
+-  Use this to spy on real people
 
 ### ALWAYS DO:
-- ✅ Only use in your isolated VMs
-- ✅ Take VM snapshots before testing
-- ✅ Keep everything in virtual lab environment
+-  Only use in your isolated VMs
+-  Take VM snapshots before testing
+-  Keep everything in virtual lab environment
 
-## 📝 Quick Report Template
+##  Quick Report Template
 
 Your report needs:
 1. **Lab setup**: Describe your 3 VMs and network
@@ -119,7 +119,7 @@ Your report needs:
 4. **Defense strategies**: How to prevent these attacks
 5. **Ethics section**: Why you only used this in a safe lab
 
-## 🕐 Time Estimates
+##  Time Estimates
 
 - **Initial setup**: 2-3 hours (first time)
 - **Running attacks**: 30 minutes
@@ -127,7 +127,7 @@ Your report needs:
 - **Writing report**: 2-3 hours
 - **Total**: 5-7 hours
 
-## 🎓 What You're Actually Learning
+##  What You're Actually Learning
 
 This isn't just "hacking" - you're learning:
 - How network protocols (ARP, DNS) work
@@ -139,7 +139,7 @@ This isn't just "hacking" - you're learning:
 
 ---
 
-## 🆘 Still Confused? Start Here:
+##  Still Confused? Start Here:
 
 ### If you've never used Linux before:
 1. Start with just setting up one Ubuntu VM
@@ -159,4 +159,4 @@ This isn't just "hacking" - you're learning:
 3. Know that ping tests if computers can talk to each other
 4. ARP = how computers find each other on local networks
 
-**Remember**: Everyone was a beginner once. Take it step by step! 🚀
+**Remember**: Everyone was a beginner once. Take it step by step! 

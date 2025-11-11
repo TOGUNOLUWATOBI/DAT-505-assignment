@@ -5,16 +5,16 @@ This project implements ARP spoofing and DNS man-in-the-middle attacks using Pyt
 ## Project Structure
 
 ```
-├── scripts/
-│   ├── arp_spoof.py          # ARP spoofing tool
-│   ├── traffic_interceptor.py # Traffic capture and analysis
-│   ├── dns_spoof.py          # DNS spoofing tool
-│   └── sslstrip_demo.py      # Optional SSLStrip demonstration
-├── pcap_files/               # Captured network traffic
-├── evidence/                 # Screenshots and logs
-├── config/                   # Configuration files
-├── requirements.txt          # Python dependencies
-└── README.md                 # This file
+ scripts/
+    arp_spoof.py          # ARP spoofing tool
+    traffic_interceptor.py # Traffic capture and analysis
+    dns_spoof.py          # DNS spoofing tool
+    sslstrip_demo.py      # Optional SSLStrip demonstration
+ pcap_files/               # Captured network traffic
+ evidence/                 # Screenshots and logs
+ config/                   # Configuration files
+ requirements.txt          # Python dependencies
+ README.md                 # This file
 
 ## Prerequisites
 

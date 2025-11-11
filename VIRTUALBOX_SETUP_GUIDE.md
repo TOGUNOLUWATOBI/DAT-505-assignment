@@ -1,29 +1,29 @@
-# 🖥️ VirtualBox Setup Guide for Mac
+#  VirtualBox Setup Guide for Mac
 ## Detailed Step-by-Step VM Configuration
 
-### 🎯 **Goal:** Create 3 isolated VMs that can only talk to each other
+###  **Goal:** Create 3 isolated VMs that can only talk to each other
 
 ---
 
-## 📋 **Before You Start**
+##  **Before You Start**
 
 ### Check Your Mac Architecture:
 ```bash
 uname -m
 ```
-- `x86_64` = Intel Mac → Download **AMD64** versions
-- `arm64` = Apple Silicon → Download **ARM64** versions
+- `x86_64` = Intel Mac  Download **AMD64** versions
+- `arm64` = Apple Silicon  Download **ARM64** versions
 
 ---
 
-## 📥 **Phase 1: Download Everything**
+##  **Phase 1: Download Everything**
 
 ### 1. Download VirtualBox
 1. Go to: https://www.virtualbox.org/wiki/Downloads
 2. Click "VirtualBox 7.0.x platform packages"
 3. Download "macOS / Intel hosts" or "macOS / Apple Silicon hosts"
 4. Install the .dmg file
-5. **Important:** Allow VirtualBox in System Preferences → Privacy & Security
+5. **Important:** Allow VirtualBox in System Preferences  Privacy & Security
 
 ### 2. Download Operating Systems
 
@@ -42,7 +42,7 @@ uname -m
 
 ---
 
-## 🚀 **Phase 2: Create Virtual Machines**
+##  **Phase 2: Create Virtual Machines**
 
 ### VM #1: Attacker (Kali Linux)
 
@@ -71,7 +71,7 @@ uname -m
 - Click **"Create"**
 
 **Step 4: Add Kali ISO**
-1. Right-click `Attacker-Kali` → **"Settings"**
+1. Right-click `Attacker-Kali`  **"Settings"**
 2. Click **"Storage"** tab
 3. Click the **CD/DVD icon** (empty)
 4. Click **"Choose a disk file..."**
@@ -79,12 +79,12 @@ uname -m
 6. Click **"OK"**
 
 **Step 5: Configure Network (CRITICAL)**
-1. Right-click `Attacker-Kali` → **"Settings"**
+1. Right-click `Attacker-Kali`  **"Settings"**
 2. Click **"Network"** tab
 3. **Adapter 1:**
-   - ☑️ Check **"Enable Network Adapter"**
-   - "Attached to:" → Select **"Internal Network"**
-   - "Name:" → Type `lab-network`
+   -  Check **"Enable Network Adapter"**
+   - "Attached to:"  Select **"Internal Network"**
+   - "Name:"  Type `lab-network`
    - **Advanced:** Leave everything default
 4. Click **"OK"**
 
@@ -110,7 +110,7 @@ uname -m
 
 ---
 
-## 🔧 **Phase 3: Install Operating Systems**
+##  **Phase 3: Install Operating Systems**
 
 ### Install Kali Linux (VM #1)
 1. **Start** `Attacker-Kali` VM
@@ -126,7 +126,7 @@ uname -m
    - Partitioning: **"Guided - use entire disk"**
    - Software: **"Default selection"**
 4. **Reboot** when complete
-5. **Remove ISO:** Settings → Storage → Remove disk from drive
+5. **Remove ISO:** Settings  Storage  Remove disk from drive
 
 ### Install Ubuntu Desktop (VM #2)
 1. **Start** `Victim-Ubuntu` VM
@@ -149,56 +149,56 @@ uname -m
    - Network: **Skip for now** (we'll configure manually)
    - Storage: **Use entire disk**
    - Profile: User `gateway`, Password `gateway`
-   - SSH: **Install OpenSSH server** ✓
+   - SSH: **Install OpenSSH server** 
    - Snaps: (skip)
 4. **Reboot** when complete
 
 ---
 
-## 🌐 **Phase 4: Verify Network Isolation**
+##  **Phase 4: Verify Network Isolation**
 
 ### Test Internal Network
 **On any VM, try:**
 ```bash
 ping 8.8.8.8
 ```
-**Should FAIL** - this proves VMs are isolated from internet ✅
+**Should FAIL** - this proves VMs are isolated from internet 
 
 **From VM to VM should work after we configure IPs in Step 6**
 
 ---
 
-## ✅ **Verification Checklist**
+##  **Verification Checklist**
 
 Before proceeding to Step 6, verify:
 
 - [ ] All 3 VMs created and OS installed
 - [ ] Each VM network shows: "Attached to: Internal Network"
 - [ ] Each VM network shows: "Name: lab-network"  
-- [ ] VMs cannot ping internet (8.8.8.8) = isolated ✅
+- [ ] VMs cannot ping internet (8.8.8.8) = isolated 
 - [ ] All ISOs removed from Storage settings
 
 ### Check Network Settings:
 **For each VM:**
-1. Right-click VM → Settings → Network
+1. Right-click VM  Settings  Network
 2. Should see:
 ```
-☑️ Enable Network Adapter
+ Enable Network Adapter
 Attached to: Internal Network
 Name: lab-network
 ```
 
 ---
 
-## 🎉 **Success!**
+##  **Success!**
 
 If all checks pass, your VMs are properly isolated and ready for Step 6 (IP configuration).
 
-The internal network `lab-network` creates a virtual switch that only these 3 VMs can access - no internet, no host machine access, completely isolated for safe testing! 🔒
+The internal network `lab-network` creates a virtual switch that only these 3 VMs can access - no internet, no host machine access, completely isolated for safe testing! 
 
 ---
 
-## 🆘 **Troubleshooting**
+##  **Troubleshooting**
 
 ### "VT-x is not available" error:
 - **Intel Mac:** Enable virtualization in BIOS/UEFI

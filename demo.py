@@ -24,7 +24,7 @@ def print_banner():
 def check_requirements():
     """Check if running as root and all files exist"""
     if os.geteuid() != 0:
-        print(f"{Fore.RED}❌ This demo must be run as root (use sudo){Style.RESET_ALL}")
+        print(f"{Fore.RED} This demo must be run as root (use sudo){Style.RESET_ALL}")
         return False
     
     required_files = [
@@ -37,15 +37,15 @@ def check_requirements():
     
     for file in required_files:
         if not os.path.exists(file):
-            print(f"{Fore.RED}❌ Missing required file: {file}{Style.RESET_ALL}")
+            print(f"{Fore.RED} Missing required file: {file}{Style.RESET_ALL}")
             return False
     
-    print(f"{Fore.GREEN}✅ All requirements met{Style.RESET_ALL}")
+    print(f"{Fore.GREEN} All requirements met{Style.RESET_ALL}")
     return True
 
 def get_lab_config():
     """Get lab configuration from user"""
-    print(f"\n{Fore.YELLOW}🔧 Lab Configuration{Style.RESET_ALL}")
+    print(f"\n{Fore.YELLOW} Lab Configuration{Style.RESET_ALL}")
     print("Enter your lab network details:")
     
     interface = input("Network interface (e.g., eth0): ").strip()
@@ -56,7 +56,7 @@ def get_lab_config():
 
 def demo_arp_discovery(interface, victim_ip, gateway_ip):
     """Demonstrate ARP discovery phase"""
-    print(f"\n{Fore.CYAN}📡 Phase 1: ARP Discovery{Style.RESET_ALL}")
+    print(f"\n{Fore.CYAN} Phase 1: ARP Discovery{Style.RESET_ALL}")
     print("Discovering MAC addresses on the network...")
     
     # Show current ARP table
@@ -67,7 +67,7 @@ def demo_arp_discovery(interface, victim_ip, gateway_ip):
 
 def demo_arp_spoofing(interface, victim_ip, gateway_ip):
     """Demonstrate ARP spoofing"""
-    print(f"\n{Fore.CYAN}🎯 Phase 2: ARP Spoofing{Style.RESET_ALL}")
+    print(f"\n{Fore.CYAN} Phase 2: ARP Spoofing{Style.RESET_ALL}")
     print("Starting ARP spoofing attack...")
     
     print(f"\n{Fore.YELLOW}Command to run ARP spoofing:{Style.RESET_ALL}")
@@ -94,7 +94,7 @@ def demo_arp_spoofing(interface, victim_ip, gateway_ip):
 
 def demo_traffic_capture(interface):
     """Demonstrate traffic capture"""
-    print(f"\n{Fore.CYAN}📊 Phase 3: Traffic Capture{Style.RESET_ALL}")
+    print(f"\n{Fore.CYAN} Phase 3: Traffic Capture{Style.RESET_ALL}")
     print("Capturing and analyzing network traffic...")
     
     print(f"\n{Fore.YELLOW}Command to run traffic capture:{Style.RESET_ALL}")
@@ -115,7 +115,7 @@ def demo_traffic_capture(interface):
 
 def demo_fake_server():
     """Demonstrate fake web server"""
-    print(f"\n{Fore.CYAN}🌐 Phase 4: Fake Web Server{Style.RESET_ALL}")
+    print(f"\n{Fore.CYAN} Phase 4: Fake Web Server{Style.RESET_ALL}")
     print("Setting up fake web server for DNS spoofing demonstration...")
     
     print(f"\n{Fore.YELLOW}Command to run fake server:{Style.RESET_ALL}")
@@ -135,7 +135,7 @@ def demo_fake_server():
 
 def demo_dns_spoofing(interface):
     """Demonstrate DNS spoofing"""
-    print(f"\n{Fore.CYAN}🎭 Phase 5: DNS Spoofing{Style.RESET_ALL}")
+    print(f"\n{Fore.CYAN} Phase 5: DNS Spoofing{Style.RESET_ALL}")
     print("Starting DNS spoofing attack...")
     
     # Show DNS targets
@@ -168,7 +168,7 @@ def demo_dns_spoofing(interface):
 
 def demo_evidence_collection():
     """Show evidence collection"""
-    print(f"\n{Fore.CYAN}📸 Phase 6: Evidence Collection{Style.RESET_ALL}")
+    print(f"\n{Fore.CYAN} Phase 6: Evidence Collection{Style.RESET_ALL}")
     print("Reviewing collected evidence...")
     
     # List pcap files
@@ -177,21 +177,21 @@ def demo_evidence_collection():
         if pcap_files:
             print(f"\n{Fore.GREEN}PCAP files collected:{Style.RESET_ALL}")
             for file in pcap_files:
-                print(f"  📁 pcap_files/{file}")
+                print(f"   pcap_files/{file}")
     
     # List log files
     log_files = [f for f in os.listdir('.') if f.endswith('.json') and 'log' in f]
     if log_files:
         print(f"\n{Fore.GREEN}Log files generated:{Style.RESET_ALL}")
         for file in log_files:
-            print(f"  📄 {file}")
+            print(f"   {file}")
     
     print(f"\n{Fore.BLUE}Evidence collection tips:{Style.RESET_ALL}")
-    print("  • Take screenshots of ARP tables before/after attacks")
-    print("  • Capture Wireshark screenshots with annotations")
-    print("  • Save browser screenshots of spoofed pages")
-    print("  • Document all commands and their output")
-    print("  • Export analysis results to CSV/JSON")
+    print("   Take screenshots of ARP tables before/after attacks")
+    print("   Capture Wireshark screenshots with annotations")
+    print("   Save browser screenshots of spoofed pages")
+    print("   Document all commands and their output")
+    print("   Export analysis results to CSV/JSON")
 
 def main():
     """Main demo function"""
@@ -200,7 +200,7 @@ def main():
     if not check_requirements():
         sys.exit(1)
     
-    print(f"\n{Fore.YELLOW}⚠️  WARNING: This demo performs actual network attacks{Style.RESET_ALL}")
+    print(f"\n{Fore.YELLOW}  WARNING: This demo performs actual network attacks{Style.RESET_ALL}")
     print(f"{Fore.YELLOW}   Only use in isolated lab environments you control{Style.RESET_ALL}")
     print(f"{Fore.YELLOW}   Unauthorized use is illegal and unethical{Style.RESET_ALL}")
     
@@ -225,7 +225,7 @@ def main():
         demo_dns_spoofing(interface)
         demo_evidence_collection()
         
-        print(f"\n{Fore.GREEN}✅ Demo completed successfully!{Style.RESET_ALL}")
+        print(f"\n{Fore.GREEN} Demo completed successfully!{Style.RESET_ALL}")
         print(f"\n{Fore.CYAN}Next steps:{Style.RESET_ALL}")
         print("  1. Review generated evidence files")
         print("  2. Analyze PCAP files with Wireshark")

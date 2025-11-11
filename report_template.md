@@ -54,7 +54,7 @@ The `arp_spoof.py` script implements ARP cache poisoning using Scapy. Key featur
 
 - Command-line interface for specifying victim IP, gateway IP, and interface
 - Automatic MAC address discovery
-- Bidirectional ARP spoofing (victim ↔ gateway)
+- Bidirectional ARP spoofing (victim  gateway)
 - IP forwarding management
 - Graceful restoration of ARP tables on exit
 - Verbose logging option

@@ -1,6 +1,6 @@
 # Complete Beginner's Guide: ARP Spoofing & DNS MitM Assignment
 
-## 🎯 What You're About to Do
+##  What You're About to Do
 
 You're going to learn about **network attacks** used by hackers to intercept internet traffic. This is for educational purposes in a **safe, controlled environment** to understand cybersecurity better.
 
@@ -9,11 +9,11 @@ You're going to learn about **network attacks** used by hackers to intercept int
 - **DNS Spoofing**: Redirects websites to fake pages you control
 - **Traffic Interception**: Captures and analyzes the data flowing through your computer
 
-**⚠️ IMPORTANT**: This is only for educational use in isolated lab environments. Using these techniques on real networks without permission is illegal!
+** IMPORTANT**: This is only for educational use in isolated lab environments. Using these techniques on real networks without permission is illegal!
 
 ---
 
-## 📋 Step 1: Understanding What You Need
+##  Step 1: Understanding What You Need
 
 ### Required Equipment:
 1. **A computer** (Windows, Mac, or Linux)
@@ -26,7 +26,7 @@ Think of VMs as separate computers running inside your real computer. Each VM ac
 
 ---
 
-## 🖥️ Step 2: Setting Up Your Virtual Lab
+##  Step 2: Setting Up Your Virtual Lab
 
 ### Download Required Software:
 
@@ -123,7 +123,7 @@ Each VM needs a specific IP address:
 
 ---
 
-## 📥 Step 3: Installing the Attack Tools
+##  Step 3: Installing the Attack Tools
 
 ### On the Attacker VM (Kali Linux):
 
@@ -162,7 +162,7 @@ Each VM needs a specific IP address:
 
 ---
 
-## 🧪 Step 4: Testing Your Setup
+##  Step 4: Testing Your Setup
 
 ### Test Network Connectivity:
 
@@ -196,12 +196,12 @@ If pings work, your network is configured correctly!
 
 ---
 
-## 🎯 Step 5: Running the Attacks
+##  Step 5: Running the Attacks
 
 ### Take VM Snapshots First!
 Before running attacks, take snapshots of all VMs so you can restore them if something goes wrong:
 1. In VirtualBox, select each VM
-2. Go to "Machine" → "Take Snapshot"
+2. Go to "Machine"  "Take Snapshot"
 3. Give it a name like "Before Attacks"
 
 ### Attack #1: ARP Spoofing
@@ -271,7 +271,7 @@ curl http://google.com
 
 ---
 
-## 📸 Step 6: Collecting Evidence
+##  Step 6: Collecting Evidence
 
 ### Screenshots You Need:
 
@@ -302,7 +302,7 @@ curl http://google.com
 
 ---
 
-## 📝 Step 7: Writing Your Report
+##  Step 7: Writing Your Report
 
 Use the provided template (`report_template.md`) and fill in:
 
@@ -332,24 +332,24 @@ Use the provided template (`report_template.md`) and fill in:
 
 ---
 
-## 🚨 Important Safety Reminders
+##  Important Safety Reminders
 
 ### What You Must NOT Do:
-- ❌ **Never run these tools on your school/work network**
-- ❌ **Never attack networks you don't own**
-- ❌ **Never use this to actually harm or spy on people**
-- ❌ **Never share these tools with people who might misuse them**
+-  **Never run these tools on your school/work network**
+-  **Never attack networks you don't own**
+-  **Never use this to actually harm or spy on people**
+-  **Never share these tools with people who might misuse them**
 
 ### What You SHOULD Do:
-- ✅ **Only use in your isolated virtual lab**
-- ✅ **Take VM snapshots before experimenting**
-- ✅ **Keep detailed logs of everything you do**
-- ✅ **Restore VMs to clean state when done**
-- ✅ **Use this knowledge to better secure networks**
+-  **Only use in your isolated virtual lab**
+-  **Take VM snapshots before experimenting**
+-  **Keep detailed logs of everything you do**
+-  **Restore VMs to clean state when done**
+-  **Use this knowledge to better secure networks**
 
 ---
 
-## 🔧 Troubleshooting Common Problems
+##  Troubleshooting Common Problems
 
 ### "Permission denied" errors:
 - Solution: Run commands with `sudo`
@@ -380,7 +380,7 @@ Use the provided template (`report_template.md`) and fill in:
 
 ---
 
-## 🎓 What You're Learning
+##  What You're Learning
 
 This assignment teaches you:
 
@@ -398,7 +398,7 @@ This assignment teaches you:
 
 ---
 
-## 📞 Getting Help
+##  Getting Help
 
 If you're stuck:
 
@@ -412,16 +412,16 @@ Remember: Learning cybersecurity takes practice. Don't get discouraged if it doe
 
 ---
 
-## 🏆 Success Checklist
+##  Success Checklist
 
 You've succeeded when you can:
 
-- ✅ Set up 3 VMs that can communicate with each other
-- ✅ Run ARP spoofing and see the victim's ARP table change
-- ✅ Capture network traffic flowing through your attacker machine
-- ✅ Redirect DNS queries to your fake web server
-- ✅ Take screenshots proving all attacks worked
-- ✅ Generate analysis files (PCAP, CSV, JSON)
-- ✅ Write a complete report explaining everything
+-  Set up 3 VMs that can communicate with each other
+-  Run ARP spoofing and see the victim's ARP table change
+-  Capture network traffic flowing through your attacker machine
+-  Redirect DNS queries to your fake web server
+-  Take screenshots proving all attacks worked
+-  Generate analysis files (PCAP, CSV, JSON)
+-  Write a complete report explaining everything
 
-**Congratulations!** You've just learned fundamental network security concepts that cybersecurity professionals use every day! 🎉
+**Congratulations!** You've just learned fundamental network security concepts that cybersecurity professionals use every day! 

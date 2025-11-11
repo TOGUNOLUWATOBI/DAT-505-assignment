@@ -76,7 +76,7 @@ sudo python3 demo.py
 
 ## Safety Reminders
 
-⚠️ **CRITICAL:** Only use in isolated lab environments
+ **CRITICAL:** Only use in isolated lab environments
 - Never test on production networks
 - Unauthorized attacks are illegal
 - Take VM snapshots before testing

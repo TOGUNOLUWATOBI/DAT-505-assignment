@@ -3,7 +3,7 @@
 ## Overview
 This guide provides step-by-step instructions to complete the cybersecurity assignment using the provided tools in an isolated virtual environment.
 
-## ⚠️ SAFETY FIRST
+##  SAFETY FIRST
 - Only use these tools in isolated virtual machines
 - Never run on production networks
 - This is for educational purposes only
@@ -276,12 +276,12 @@ curl http://192.168.1.100
 
 ## Success Criteria
 
-✅ ARP spoofing changes victim's ARP table
-✅ Traffic flows through attacker (PCAP evidence)
-✅ DNS spoofing redirects domains to fake server
-✅ Comprehensive traffic analysis completed
-✅ All evidence properly documented
-✅ Report covers all required sections
+ ARP spoofing changes victim's ARP table
+ Traffic flows through attacker (PCAP evidence)
+ DNS spoofing redirects domains to fake server
+ Comprehensive traffic analysis completed
+ All evidence properly documented
+ Report covers all required sections
 
 ## Timeline
 

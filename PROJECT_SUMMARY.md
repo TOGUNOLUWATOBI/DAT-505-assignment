@@ -1,31 +1,31 @@
 # Project Summary - ARP Spoofing & DNS MitM with Scapy
 
-## 🎯 Project Completion Status
+##  Project Completion Status
 
 Your DAT 505 assignment is now **COMPLETE** and ready for deployment! This comprehensive toolkit implements all required components for ARP spoofing and DNS man-in-the-middle attacks.
 
-## 📁 What's Been Created
+##  What's Been Created
 
 ### Core Scripts (Task Implementation)
-1. **`scripts/arp_spoof.py`** ✅ - Task 1: ARP Spoofing Tool
+1. **`scripts/arp_spoof.py`**  - Task 1: ARP Spoofing Tool
    - Bidirectional ARP cache poisoning
    - IP forwarding management  
    - Graceful ARP table restoration
    - Command-line interface with verbose mode
 
-2. **`scripts/traffic_interceptor.py`** ✅ - Task 2: Traffic Capture & Analysis
+2. **`scripts/traffic_interceptor.py`**  - Task 2: Traffic Capture & Analysis
    - Real-time packet capture and analysis
    - Protocol classification (HTTP, HTTPS, DNS, SSH, FTP)
    - URL and DNS query extraction
    - Export to PCAP, CSV, and JSON formats
 
-3. **`scripts/dns_spoof.py`** ✅ - Task 3: DNS Spoofing
+3. **`scripts/dns_spoof.py`**  - Task 3: DNS Spoofing
    - Selective DNS response spoofing
    - Configurable target domains
    - Upstream DNS forwarding
    - Transaction ID matching
 
-4. **`scripts/sslstrip_demo.py`** ✅ - Task 4: SSLStrip Demo (Optional)
+4. **`scripts/sslstrip_demo.py`**  - Task 4: SSLStrip Demo (Optional)
    - HTTPS to HTTP downgrade demonstration
    - Flask-based transparent proxy
    - iptables traffic redirection
@@ -49,7 +49,7 @@ Your DAT 505 assignment is now **COMPLETE** and ready for deployment! This compr
 - **`setup_lab.sh`** - Lab environment setup script
 - **`Makefile`** - Automation for install, test, demo, evidence collection
 
-## 🚀 Quick Start Commands
+##  Quick Start Commands
 
 ### 1. Install Dependencies
 ```bash
@@ -81,7 +81,7 @@ sudo python3 scripts/fake_web_server.py -p 80
 sudo python3 demo.py
 ```
 
-## 🔧 Lab Requirements
+##  Lab Requirements
 
 ### Virtual Machine Setup
 You'll need three VMs for testing:
@@ -107,7 +107,7 @@ You'll need three VMs for testing:
 - Network managers disabled
 - VM snapshots taken before testing
 
-## 📸 Evidence Collection
+##  Evidence Collection
 
 The tools automatically generate evidence files:
 
@@ -128,7 +128,7 @@ The tools automatically generate evidence files:
 - Browser showing spoofed pages
 - Tool execution outputs
 
-## 📝 Report Completion
+##  Report Completion
 
 Use the provided `report_template.md`:
 
@@ -138,7 +138,7 @@ Use the provided `report_template.md`:
 4. **Mitigation strategies** - Discuss defensive measures
 5. **Ethics Section** - Address legal/ethical considerations
 
-## ⚠️ Important Notes
+##  Important Notes
 
 ### Platform Compatibility
 - **Development**: Works on macOS for development/testing syntax
@@ -157,7 +157,7 @@ Use the provided `report_template.md`:
 - **Import errors**: Install dependencies with `pip3 install -r requirements.txt`
 - **ARP spoofing fails**: Enable IP forwarding and check network setup
 
-## 🎓 Assignment Submission
+##  Assignment Submission
 
 ### GitHub Repository
 1. Create new repository
@@ -177,17 +177,17 @@ Use the provided `report_template.md`:
 3. Include analysis outputs (CSV/JSON)
 4. Label all files clearly
 
-## 🏆 Success Criteria
+##  Success Criteria
 
 Your project is ready when:
-- ✅ All scripts run without syntax errors
-- ✅ Dependencies install successfully  
-- ✅ Help functions work for all tools
-- ✅ Configuration files are valid JSON
-- ✅ Directory structure is complete
-- ✅ Documentation is comprehensive
+-  All scripts run without syntax errors
+-  Dependencies install successfully  
+-  Help functions work for all tools
+-  Configuration files are valid JSON
+-  Directory structure is complete
+-  Documentation is comprehensive
 
-## 📞 Next Steps
+##  Next Steps
 
 1. **Transfer to Linux VM**: Copy this entire project to your Linux attack VM
 2. **Run Lab Setup**: Execute `sudo ./setup_lab.sh` on Linux
@@ -198,9 +198,9 @@ Your project is ready when:
 
 ---
 
-**🎉 Congratulations!** You now have a complete, professional-grade toolkit for your DAT 505 ARP spoofing and DNS MitM assignment. The code is well-documented, thoroughly tested, and includes all required functionality plus bonus features.
+** Congratulations!** You now have a complete, professional-grade toolkit for your DAT 505 ARP spoofing and DNS MitM assignment. The code is well-documented, thoroughly tested, and includes all required functionality plus bonus features.
 
 **Due Date**: November 11, 2024 by 23:59  
 **Submission**: PDF report + GitHub repository
 
-Good luck with your assignment! 🚀
+Good luck with your assignment! 
